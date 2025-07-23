@@ -1,0 +1,15 @@
+{
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Address": "123 Leviste", 
+    "City": "Makati",
+    "State": "Metro Manila",
+    "ZipCode": "1010",
+    "PhoneNumber": "09123456789",
+    "ssn": "1234-456",
+    "Username": "JohnDoe",
+    "Password": "DoeJohn",
+    "Confirm": "DoeJohn",
+    "accountTypes": ["SAVINGS", "CHECKING"]
+
+}
