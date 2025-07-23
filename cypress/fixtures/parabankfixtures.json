@@ -9,7 +9,5 @@
     "ssn": "1234-456",
     "Username": "JohnDoe",
     "Password": "DoeJohn",
-    "Confirm": "DoeJohn",
-    "accountTypes": ["SAVINGS", "CHECKING"]
-
+    "Confirm": "DoeJohn"
 }
