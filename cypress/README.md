@@ -89,12 +89,12 @@ npm install @faker-js/faker
 💻 Headed Mode (with Cypress UI):
 npx cypress open
 -- or  
-"parabank-commands-headed": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed"
+"parabank-commands-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed"
 
 ⚡ Headless Mode (via CLI):
 npx cypress run
 -- or 
-"parabank-commands-headless": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'"
+"parabank-commands-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'"
 
 🌟 Features of Parabank Website (including validation and verification of features)
 
