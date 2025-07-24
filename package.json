@@ -4,12 +4,12 @@
   "description": "examples",
   "main": "index.js",
   "scripts": {
-    "parabank-headed": "npx cypress run --spec 'cypress/e2e/Parabank.cy.js,cypress/e2e/Parabank_Util.cy.js' --browser chrome --headed",
-    "parabank-headless": "npx cypress run --spec 'cypress/e2e/Parabank.cy.js,cypress/e2e/Parabank_Util.cy.js'",
-    "parabank-commands-headed": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed",
-    "parabank-commands-headless": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'",
-    "test-headed": "npx cypress run --spec 'cypress/e2e/test1.cy.js' --browser chrome --headed",
-    "test-headless": "npx cypress run --spec 'cypress/e2e/test1.cy.js'",
+    "parabank-headed": "npm cypress run --spec 'cypress/e2e/Parabank.cy.js,cypress/e2e/Parabank_Util.cy.js' --browser chrome --headed",
+    "parabank-headless": "npm cypress run --spec 'cypress/e2e/Parabank.cy.js,cypress/e2e/Parabank_Util.cy.js'",
+    "parabank-commands-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed",
+    "parabank-commands-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'",
+    "test-headed": "npm cypress run --spec 'cypress/e2e/test1.cy.js' --browser chrome --headed",
+    "test-headless": "npm cypress run --spec 'cypress/e2e/test1.cy.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
