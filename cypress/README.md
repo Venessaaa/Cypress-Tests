@@ -85,6 +85,16 @@ npm install --save-dev cypress-downloadfile
 npm install cypress-plugin-api
 npm install @faker-js/faker
 
+🧪 Running the Tests
+💻 Headed Mode (with Cypress UI):
+npx cypress open
+-- or  
+"parabank-commands-headed": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed"
+
+⚡ Headless Mode (via CLI):
+npx cypress run
+-- or 
+"parabank-commands-headless": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'"
 
 🌟 Features of Parabank Website (including validation and verification of features)
 
@@ -114,16 +124,9 @@ Amount
 
 🧪 Fixture-based testing for reusable data
 
-🧪 Running the Tests
-💻 Headed Mode (with Cypress UI):
-npx cypress open
-//or  
-"parabank-commands-headed": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed"
-
-⚡ Headless Mode (via CLI):
-npx cypress run
-"parabank-commands-headless": "npx cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'"
-
+❤️ Author
+Created by: Jai  
+GitHub: https://github.com/Venessaaa
 
 
 
