@@ -2,6 +2,7 @@ import { generateFakeUser } from "../../utils/ParabankUtils";
 const user = new generateFakeUser();
 //updating profile command 
 Cypress.Commands.add('updateProfileA', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/updateprofile.htm');
     cy.get('input[name="customer.address.street"]').clear().type(user.address);
     cy.get('input[name="customer.address.city"]').clear().type(user.city);
@@ -13,8 +14,8 @@ Cypress.Commands.add('updateProfileA', () => {
 
 //city is blank 
 Cypress.Commands.add('profileCityErr', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/updateprofile.htm');
-
     cy.get('input[name="customer.address.street"]').clear().type(user.address);
     cy.get('input[name="customer.address.city"]').clear();
     cy.get('input[name="customer.address.state"]').clear().type(user.state);
@@ -24,6 +25,7 @@ Cypress.Commands.add('profileCityErr', () => {
 });
 //state is blank 
 Cypress.Commands.add('profilestateErr', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/updateprofile.htm');
     cy.get('input[name="customer.address.street"]').clear().type(user.address);
     cy.get('input[name="customer.address.city"]').clear().type(user.city);

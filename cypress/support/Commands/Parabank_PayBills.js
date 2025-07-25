@@ -1,6 +1,7 @@
 //bill payments
 Cypress.Commands.add('billPayment', () => {
     const amount = Cypress._.random(10, 5000).toString();
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/billpay.htm');
     cy.fixture('parabankfixtures').then(user => {
         user.AccountNumber = user.AccountNumber || '12345';
@@ -55,6 +56,7 @@ Cypress.Commands.add('billPayment', () => {
 //negative account number is in special characters
 Cypress.Commands.add('billPaymentN1', () => {
     const amount = Cypress._.random(10, 5000).toString();
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/billpay.htm');
     cy.fixture('parabankfixtures').then(user => {
         user.AccountNumber = user.AccountNumber || '!@#';
@@ -110,6 +112,7 @@ Cypress.Commands.add('billPaymentN1', () => {
 //negative path - input letters to account number
 Cypress.Commands.add('billPaymentN2', () => {
     const amount = Cypress._.random(10, 5000).toString();
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/billpay.htm');
     cy.fixture('parabankfixtures').then(user => {
         user.AccountNumber = user.AccountNumber || 'ABC';
@@ -164,6 +167,7 @@ Cypress.Commands.add('billPaymentN2', () => {
 
 //all fields are left blank
 Cypress.Commands.add('billPaymentN3', () => {
+    cy.wait(2000);
     cy.visit('https://parabank.parasoft.com/parabank/billpay.htm');
     cy.fixture('parabankfixtures').then(user => {
         user.AccountNumber = user.AccountNumber || 'ABC';

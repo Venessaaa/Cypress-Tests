@@ -1,4 +1,3 @@
-
 import { generateFakeUser } from '../../utils/ParabankUtils';
 import { } from '../../support/Commands/Parabank_Register';
 import { } from '../../support/Commands/Parabank_Transfer';
@@ -327,7 +326,7 @@ describe('Parabank custom command tests', () => {
         cy.logout();
         cy.captureScreenshot(this.test.title);
 
-    })
+    });
 });
 
 

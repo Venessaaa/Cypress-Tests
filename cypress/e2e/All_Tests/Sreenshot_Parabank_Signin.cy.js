@@ -1,5 +1,5 @@
-import { generateFakeUser } from '../utils/ParabankUtils';
-import '../support/Commands/command';
+import { generateFakeUser } from '../../utils/ParabankUtils';
+import '../../support/Commands/command';
 
 describe('Parabank Signin', () => {
   beforeEach(() => {

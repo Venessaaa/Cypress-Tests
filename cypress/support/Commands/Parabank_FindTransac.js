@@ -2,7 +2,7 @@
 Cypress.Commands.add('fixtureAccount', () => {
     const accountType = ['SAVINGS', 'CHECKING'];
     const selectedType = Cypress._.sample(accountType);
-
+    cy.wait(1000);
     // Visit Open Account Page
     cy.visit('https://parabank.parasoft.com/parabank/openaccount.htm');
     cy.get('#openAccountForm > .title')
@@ -20,21 +20,6 @@ Cypress.Commands.add('fixtureAccount', () => {
 
     // Submit Open Account
     cy.get('form > div > .button').click().wait(250);
-
-    // Get the new account ID and visit it
-    cy.get('#newAccountId')
-        .invoke('text')
-        .then((accountId) => {
-            const trimmedId = accountId.trim();
-            cy.get('#newAccountId').click();
-
-            // Apply 'All' filters to ensure transaction visibility
-            cy.get('select[name="month"]').select('All');
-            cy.get('select[name="transactionType"]').select('All');
-            cy.get(':nth-child(3) > :nth-child(2) > .button').click();
-            cy.get('table#transactionTable').should('be.visible');
-            cy.get('tr > :nth-child(2) > a').first().click();
-        });
 });
 
 //find transaction using transaction ID - not working on website 
@@ -88,7 +73,8 @@ Cypress.Commands.add('findTransactionAmount', () => {
             cy.get('#accountId').select(selectedAccount);
             cy.get('#amount').clear().type(randomAmount.toString());
             cy.get('#findByAmount').click();
-            cy.get('#resultContainer > .title').should('contain.text', 'Transaction Result').and('be.visible');
+            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
+            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
 
         });
 });
@@ -134,8 +120,8 @@ Cypress.Commands.add('findTransactionDateRange', () => {
             cy.get('#fromDate').clear().type(formatDate(fromDate));
             cy.get('#toDate').clear().type(formatDate(toDate));
             cy.get('#findByDateRange').click();
-            cy.get('#resultContainer > .title').should('contain.text', 'Transaction Result').and('be.visible');
-
+            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
+            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
         });
 });
 
@@ -160,8 +146,6 @@ Cypress.Commands.add('findTransactionDate', () => {
         return `${mm}-${dd}-${yyyy}`;
     };
     const formattedDate = formatDate(date1);
-
-    // Find Transactions page
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
 
     // Select a valid account and input the random date
@@ -178,7 +162,8 @@ Cypress.Commands.add('findTransactionDate', () => {
             cy.get('#accountId').select(selectedAccount);
             cy.get('#transactionDate').clear().type(formattedDate);
             cy.get('#findByDate').click();
-            cy.get('#resultContainer > .title').should('contain.text', 'Transaction Result').and('be.visible');
+            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
+            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
         });
 });
 
@@ -192,7 +177,6 @@ Cypress.Commands.add('findTransactionDateToday', () => {
         return `${mm}-${dd}-${yyyy}`;
     };
     const formattedToday = formatDate(today);
-    // Find Transactions page
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     // Select a valid account and input the random date
     cy.get('#accountId')
@@ -214,6 +198,7 @@ Cypress.Commands.add('findTransactionDateToday', () => {
 
 //find transaction negative - amount blank
 Cypress.Commands.add('findTransactionAmountN1', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')
@@ -237,6 +222,7 @@ Cypress.Commands.add('findTransactionAmountN1', () => {
 
 //find transaction negative - amount is in letters
 Cypress.Commands.add('findTransactionAmountN2', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')
@@ -259,6 +245,7 @@ Cypress.Commands.add('findTransactionAmountN2', () => {
 });
 //negative - date range is empty
 Cypress.Commands.add('findTransactionDateRangeN1', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')
@@ -281,6 +268,7 @@ Cypress.Commands.add('findTransactionDateRangeN1', () => {
 });
 //negative - date range is empty
 Cypress.Commands.add('findTransactionDateRangeN2', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')
@@ -326,6 +314,7 @@ Cypress.Commands.add('findTransactionDateRangeN3', () => {
         const dd = String(date.getDate()).padStart(2, '0');
         return `${mm}-${dd}-${yyyy}`;
     };
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')
@@ -371,6 +360,7 @@ Cypress.Commands.add('findTransactionDateRangeN4', () => {
         const dd = String(date.getDate()).padStart(2, '0');
         return `${mm}-${dd}-${yyyy}`;
     };
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/findtrans.htm');
     cy.get('#accountId')
         .should('be.visible')

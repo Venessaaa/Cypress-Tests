@@ -2,7 +2,7 @@
 Cypress.Commands.add('requestLoan', () => {
     const randomAmount = Math.floor(Math.random() * (5000 - 100 + 1)) + 100;
     const downPayment = 20;
-
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type(randomAmount.toString());
     cy.get('#downPayment').clear().type(downPayment.toString());
@@ -32,6 +32,7 @@ Cypress.Commands.add('requestLoan', () => {
 });
 //letters 
 Cypress.Commands.add('requestLoanN1', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type('ABC');
     cy.get('#downPayment').clear().type('20');
@@ -51,6 +52,7 @@ Cypress.Commands.add('requestLoanN1', () => {
 });
 //blank 
 Cypress.Commands.add('requestLoanN2', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear();
     cy.get('#downPayment').clear().type('20');
@@ -70,6 +72,7 @@ Cypress.Commands.add('requestLoanN2', () => {
 });
 //special characters 
 Cypress.Commands.add('requestLoanN3', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type('!@#');
     cy.get('#downPayment').clear().type('20');
@@ -89,6 +92,7 @@ Cypress.Commands.add('requestLoanN3', () => {
 });
 //letters in dp
 Cypress.Commands.add('requestLoanN4', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type('300');
     cy.get('#downPayment').clear().type('ABC');
@@ -108,6 +112,7 @@ Cypress.Commands.add('requestLoanN4', () => {
 });
 //blank in dp 
 Cypress.Commands.add('requestLoanN5', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type('300');
     cy.get('#downPayment').clear();
@@ -127,6 +132,7 @@ Cypress.Commands.add('requestLoanN5', () => {
 });
 //special characters in dp
 Cypress.Commands.add('requestLoanN6', () => {
+    cy.wait(1000);
     cy.visit('https://parabank.parasoft.com/parabank/requestloan.htm');
     cy.get('#amount').clear().type('300');
     cy.get('#downPayment').clear().type('!@#');

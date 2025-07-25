@@ -1,5 +1,5 @@
-import { generateFakeUser } from '../utils/ParabankUtils';
-import { fillRegistrationForm } from '../utils/ParabankUtils';
+import { generateFakeUser } from '../../utils/ParabankUtils';
+import { fillRegistrationForm } from '../../utils/ParabankUtils';
 
 describe('Parabank Registration', () => {
   beforeEach(() => {

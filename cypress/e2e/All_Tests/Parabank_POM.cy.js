@@ -1,6 +1,6 @@
-import { RegisterPage } from '../pages/RegisterPage';
-import { UpdateProfilePage } from '../pages/UpdateProfilePage';
-import { generateFakeUser } from '../utils/ParabankUtils';
+import { RegisterPage } from '../../pages/RegisterPage';
+import { UpdateProfilePage } from '../../pages/UpdateProfilePage';
+import { generateFakeUser } from '../../utils/ParabankUtils';
 
 const registerPage = new RegisterPage();
 const updateProfilePage = new UpdateProfilePage();

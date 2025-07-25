@@ -1,8 +1,8 @@
-import { generateFakeUser } from '../utils/ParabankUtils';
-import { fillRegistrationForm } from '../utils/ParabankUtils';
-import { getRandomStateWithZip } from '../utils/ParabankUtils';
+import { generateFakeUser } from '../../utils/ParabankUtils';
+import { fillRegistrationForm } from '../../utils/ParabankUtils';
+import { getRandomStateWithZip } from '../../utils/ParabankUtils';
 
-import '../support/Commands/command';
+import '../../support/Commands/command';
 
 describe('Parabank Registration', () => {
     beforeEach(() => {

@@ -4,40 +4,56 @@ This project contains end-to-end test automation for the [Parabank Demo Website]
 
 ---
 ## 📁 Project Structure
-cypress/
-├── downloads/
-├── e2e/
-│ ├── Basic_Tests.cy.js
-│ ├── Parabank_Commands.cy.js
-│ ├── Parabank_Fixture.cy.js
-│ ├── Parabank_Flow.cy.js
-│ ├── Parabank_POM.cy.js
-│ ├── Parabank_Util.cy.js
-│ ├── Parabank_Util2.cy.js
-│ ├── Sreenshot_Parabank_Signin.cy.js
-│ ├── test2.cy.js
-│ └── cypress project.code-workspace
-├── fixtures/
-│ ├── example.json
-│ └── parabankfixtures.json
-├── pages/
-│ ├── RegisterPage.js
-│ └── UpdateProfilePage.js
-├── screenshots/
-├── support/
-│ └── Commands/
-│ ├── Parabank_FindTransac.js
-│ ├── Parabank_OpenAcct.js
-│ ├── Parabank_Overview.js
-│ ├── Parabank_PayBills.js
-│ ├── Parabank_Register.js
-│ ├── Parabank_ReqLoan.js
-│ ├── Parabank_Transfer.js
-│ ├── Parabank_Updateprof.js
-│ ├── command.js
-│ └── e2e.js
-└── utils/
+
+cypress-project/
+│
+├── cypress/
+│   ├── downloads/                     
+│   ├── e2e/
+│   │   ├── Parabank_Test/             # All test cases of Parabank
+│   │   │   ├── AcctOverview.cy.js
+│   │   │   ├── BillPay.cy.js
+│   │   │   ├── FindTransaction.cy.js
+│   │   │   ├── Logout.cy.js
+│   │   │   ├── OpenAccount.cy.js
+│   │   │   ├── Register.cy.js
+│   │   │   ├── RequestLoan.cy.js
+│   │   │   ├── TransferFunds.cy.js
+│   │   │   └── UpdateProf.cy.js
+│
+│   ├── fixtures/                     # Static data for testing 
+│
+│   ├── screenshots/                  # Screenshots per tests 
+│   │   ├── AcctOverview.cy/
+│   │   ├── BillPay.cy/
+│   │   ├── FindTransaction.cy/
+│   │   ├── Logout.cy/
+│   │   ├── OpenAccount.cy/
+│   │   ├── Register.cy/
+│   │   ├── RequestLoan.cy/
+│   │   ├── TransferFunds.cy/
+│   │   └── UpdateProf.cy/
+│
+│   └── support/
+│       ├── Commands/                # Custom Cypress commands for Parabank
+│       │   ├── Parabank_FindTransac.js
+│       │   ├── Parabank_OpenAcct.js
+│       │   ├── Parabank_Overview.js
+│       │   ├── Parabank_PayBills.js
+│       │   ├── Parabank_Register.js
+│       │   ├── Parabank_ReqLoan.js
+│       │   ├── Parabank_Transfer.js
+│       │   ├── Parabank_UpdateProf.js
+│       │   └── index.js             
+│       ├── commands.js
+│       └── e2e.js
+│
+├── utils/                            # Reusable utilities
+├── node_modules/
+├── .gitignore
+├── package.json
 └── README.md
+
 ---
 
 ## 📑 Table of Contents
@@ -85,18 +101,36 @@ npm install --save-dev cypress-downloadfile
 npm install cypress-plugin-api
 npm install @faker-js/faker
 
-🧪 Running the Tests
-💻 Headed Mode (with Cypress UI):
+### 🧪 Running the Tests
+
+### 💻 Headed Mode (with Cypress UI):
 npx cypress open
 -- or  
-"parabank-commands-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js' --browser chrome --headed"
+    "parabank-register-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/Register.cy.js' --browser chrome --headed", 
+    "parabank-openacc-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/OpenAccount.cy.js' --browser chrome --headed", 
+    "parabank-overview-headed": "npm cypress run --spec 'cypress/e2e/parabank_Test/AcctOverview.cy.js' --browser chrome --headed", 
+    "parabank-paybill-headed": "npm cypress run --spec 'cypress/e2/Parabank_Test/BillPay.cy.js' --browser chrome --headed", 
+    "parabank-findtransac-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/FindTransaction.cy.js' --browser chrome --headed", 
+    "parabank-transfer-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/TransferFunds.cy.js' --browser chrome --headed", 
+    "parabank-reqloan-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/RequestLoan.cy.js' --browser chrome --headed", 
+    "parabank-update-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/UpdatepProf.cy.js' --browser chrome --headed", 
+    "parabank-logout-headed": "npm cypress run --spec 'cypress/e2e/Parabank_Test/Logout.cy.js' --browser chrome --headed", 
 
-⚡ Headless Mode (via CLI):
+### ⚡ Headless Mode (via CLI):
 npx cypress run
 -- or 
-"parabank-commands-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Commands.cy.js'"
+    "parabank-register-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/Register.cy.js'", 
+    "parabank-openacc-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/OpenAccount.cy.js'", 
+    "parabank-overview-headless": "npm cypress run --spec 'cypress/e2e/parabank_Test/AcctOverview.cy.js'", 
+    "parabank-paybill-headless": "npm cypress run --spec 'cypress/e2/Parabank_Test/BillPay.cy.js'", 
+    "parabank-findtransac-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/FindTransaction.cy.js'", 
+    "parabank-transfer-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/TransferFunds.cy.js'", 
+    "parabank-reqloan-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/RequestLoan.cy.js'", 
+    "parabank-update-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/UpdatepProf.cy.js'", 
+    "parabank-logout-headless": "npm cypress run --spec 'cypress/e2e/Parabank_Test/Logout.cy.js'", 
 
-🌟 Features of Parabank Website (including validation and verification of features)
+
+### 🌟 Features of Parabank Website (including validation and verification of features)
 
 ✅ Automated user registration 
 
@@ -124,7 +158,7 @@ Amount
 
 🧪 Fixture-based testing for reusable data
 
-❤️ Author
+### ❤️ Author
 Created by: Jai  
 GitHub: https://github.com/Venessaaa
 
