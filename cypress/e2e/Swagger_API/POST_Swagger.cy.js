@@ -11,7 +11,7 @@ describe('POST - simulate different status codes', () => {
     userStatus: 1
   };
 
-  it('Status 200 - Should return 200 (treated as 201) on successful creation', () => {
+  it('returned status 200 on successful creation', () => {
     cy.request({
       method: 'POST',
       url: `${baseUrl}`,
@@ -26,7 +26,7 @@ describe('POST - simulate different status codes', () => {
   });
 
 
-  it('Status 400 - Should return 400 for bad request (malformed JSON)', () => {
+  it('returned status 400 for bad request (malformed JSON)', () => {
     cy.request({
       method: 'POST',
       url: `${baseUrl}`,
@@ -40,7 +40,7 @@ describe('POST - simulate different status codes', () => {
     });
   });
 
-  it('Status 401 - Should simulate 401 Unauthorized using intercept', () => {
+  it('returned status  401 Unauthorized using intercept', () => {
     cy.intercept('POST', `${baseUrl}`, {
       statusCode: 401,
       body: {
@@ -65,7 +65,7 @@ describe('POST - simulate different status codes', () => {
     });
   });
 
-  it('Status 409 - should simulate 409 Conflict on duplicate user creation', () => {
+  it('returned status 409 Conflict on duplicate user creation', () => {
     // create user
     cy.request({
       method: 'POST',

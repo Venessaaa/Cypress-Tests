@@ -1,7 +1,7 @@
 describe('PUT - simulate different status code', () => {
   const baseUrl = 'https://petstore.swagger.io/v2/user';
 
-  it('Status 200 - Should successfully update an existing user', () => {
+  it('returned status 200 successfully update an existing user', () => {
     cy.request({
       method: 'PUT',
       url: `${baseUrl}/4`, // existing username
@@ -25,7 +25,7 @@ describe('PUT - simulate different status code', () => {
     });
   });
 
-  it('Status 404 - Should return 404 for a non-existing user', () => {
+  it('returned status 404 for a non-existing user', () => {
     cy.request({
       method: 'PUT',
       url: `${baseUrl}/nonexistent_user_abc123`, // random non-existing user
@@ -49,7 +49,7 @@ describe('PUT - simulate different status code', () => {
     });
   });
 
-  it('Status 400 - Should return 400 for invalid request body (malformed)', () => {
+  it('returned status 400 for invalid request body (malformed)', () => {
     cy.request({
       method: 'PUT',
       url: `${baseUrl}/user!4`,

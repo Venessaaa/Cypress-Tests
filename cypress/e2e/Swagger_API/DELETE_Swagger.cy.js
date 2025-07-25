@@ -11,7 +11,7 @@ describe('DELETE - simulate different status codes', () => {
         userStatus: 1
     };
 
-    it('Status 200 - should delete data', () => {
+    it('returned status 200 successful deletion', () => {
         cy.request('POST', `${baseUrl}`, userData);
         
         cy.wait(1000);
@@ -24,7 +24,8 @@ describe('DELETE - simulate different status codes', () => {
         });
 
     });
-    it('Status 404 - should return 404 after the deletion', () => {
+    
+    it('returned status 404 after the deletion', () => {
         cy.wait(1000);
         cy.request({
             method: 'DELETE',

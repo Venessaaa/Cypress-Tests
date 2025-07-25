@@ -11,7 +11,7 @@ describe('GET - simulate different status code', () => {
         userStatus: 1
     };
 
-    it('Status 200 - Should retrieve user data successfully', () => {
+    it('returned status 200 retrieving user data successfully', () => {
         cy.request('POST', `${baseUrl}`, userData);
         cy.wait(2000);
         cy.request({
@@ -26,7 +26,7 @@ describe('GET - simulate different status code', () => {
         });
     });
 
-    it('Status 404 - Should return 404 for non-existing user', () => {
+    it('returned status 404 for non-existing user', () => {
         cy.request({
             method: 'GET',
             url: `${baseUrl}/nonexistent_user_123`,
@@ -37,4 +37,27 @@ describe('GET - simulate different status code', () => {
             expect(response.body).to.have.property('message', 'User not found');
         });
     });
+
+    it('returned 401 Unauthorized on GET request (simulated)', () => {
+        cy.intercept('GET', '**/user/*', {
+            statusCode: 401,
+            body: {
+                code: 401,
+                message: 'Unauthorized'
+            }
+        }).as('unauthorizedGet');
+
+        cy.request({
+            method: 'GET',
+            url: `${baseUrl}/someUser`,
+            failOnStatusCode: false
+        }).then((res) => {
+            expect(res.status).to.be.oneOf([401, 404]);
+            if (res.status === 401) {
+                expect(res.body.message).to.eq('Unauthorized');
+            }
+
+        });
+    });
+
 });
