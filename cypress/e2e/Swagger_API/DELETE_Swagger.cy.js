@@ -24,10 +24,10 @@ describe('DELETE - simulate different status codes', () => {
         });
 
     });
-    
+
     it('returned status 404 after the deletion', () => {
         cy.wait(1000);
-        cy.request({
+         cy.request({
             method: 'DELETE',
             url: `${baseUrl}/${userData.username}`
         }).then((response) => {

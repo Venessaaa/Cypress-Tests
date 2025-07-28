@@ -38,7 +38,7 @@ describe('GET - simulate different status code', () => {
         });
     });
 
-    it('returned 401 Unauthorized on GET request (simulated)', () => {
+    it('returned 401 Unauthorized on GET request', () => {
         cy.intercept('GET', '**/user/*', {
             statusCode: 401,
             body: {
