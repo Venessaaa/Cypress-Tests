@@ -24,3 +24,5 @@ jobs:
  
       - name: Run Cypress tests
         run: cypress-io/github-action@v6
+        with:
+          install: true  # Automatically runs npm install
