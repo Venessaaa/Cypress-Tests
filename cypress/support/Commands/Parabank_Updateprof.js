@@ -2,7 +2,7 @@ import { generateFakeUser } from "../../utils/ParabankUtils";
 const user = new generateFakeUser();
 //updating profile command 
 Cypress.Commands.add('updateProfileA', () => {
-    cy.wait(1000);
+    cy.wait(500);
     cy.visit('https://parabank.parasoft.com/parabank/updateprofile.htm');
     cy.get('input[name="customer.address.street"]').clear().type(user.address);
     cy.get('input[name="customer.address.city"]').clear().type(user.city);
