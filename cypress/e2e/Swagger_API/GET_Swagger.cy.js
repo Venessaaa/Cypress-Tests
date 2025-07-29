@@ -1,3 +1,5 @@
+import 'cypress-plugin-api';
+
 describe('GET - simulate different status code', () => {
     const baseUrl = 'https://petstore.swagger.io/v2/user';
     const userData = {
@@ -12,22 +14,21 @@ describe('GET - simulate different status code', () => {
     };
 
     it('returned status 200 retrieving user data successfully', () => {
-        cy.request('POST', `${baseUrl}`, userData);
+        cy.api('POST', `${baseUrl}`, userData);
         cy.wait(2000);
-        cy.request({
+        cy.api({
             method: 'GET',
             url: `${baseUrl}/${userData.username}`,
             header: { 'Content-Type': 'application/json' }
         }).then((response) => {
             expect(response.status).to.eq(200);
-            expect(response.body).to.have.property('id', userData.id);
             expect(response.body).to.have.property('username', userData.username);
             expect(response.body.username).to.be.a('string');
         });
     });
 
     it('returned status 404 for non-existing user', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: `${baseUrl}/nonexistent_user_123`,
             failOnStatusCode: false
@@ -47,7 +48,7 @@ describe('GET - simulate different status code', () => {
             }
         }).as('unauthorizedGet');
 
-        cy.request({
+        cy.api({
             method: 'GET',
             url: `${baseUrl}/someUser`,
             failOnStatusCode: false

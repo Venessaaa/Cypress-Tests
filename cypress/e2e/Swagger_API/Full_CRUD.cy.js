@@ -1,3 +1,4 @@
+import 'cypress-plugin-api';
 describe('Swagger Petstore User API - POST, GET, DELETE', () => {
     const baseUrl = 'https://petstore.swagger.io/v2';
     const userData = {
@@ -12,7 +13,7 @@ describe('Swagger Petstore User API - POST, GET, DELETE', () => {
     };
 
     it('POST - should create a new user', () => {
-        cy.request({
+        cy.api({
             method: 'POST',
             url: `${baseUrl}/user`,
             body: userData,
@@ -26,7 +27,7 @@ describe('Swagger Petstore User API - POST, GET, DELETE', () => {
     });
 
     it('POST & GET - create and retrieve user in one flow', () => {
-        cy.request({
+        cy.api({
             method: 'POST',
             url: `${baseUrl}/user`,
             body: userData,
@@ -38,7 +39,7 @@ describe('Swagger Petstore User API - POST, GET, DELETE', () => {
             expect(postResponse.body.message).to.eq(userData.id.toString());
 
             // Chaining GET request after successful POST
-            cy.request({
+            cy.api({
                 method: 'GET',
                 url: `${baseUrl}/user/${userData.username}`,
                 failOnStatusCode: false 
@@ -51,7 +52,7 @@ describe('Swagger Petstore User API - POST, GET, DELETE', () => {
     });
 
     it('DELETE - should delete the user', () => {
-        cy.request({
+        cy.api({
             method: 'DELETE',
             url: `${baseUrl}/user/${userData.username}`
         }).then((response) => {
@@ -61,7 +62,7 @@ describe('Swagger Petstore User API - POST, GET, DELETE', () => {
     });
 
     it('GET - should return 404 after the deletion', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: `${baseUrl}/user/${userData.username}`,
             failOnStatusCode: false

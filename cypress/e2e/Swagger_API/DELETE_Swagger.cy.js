@@ -13,7 +13,6 @@ describe('DELETE - simulate different status codes', () => {
 
     it('returned status 200 successful deletion', () => {
         cy.request('POST', `${baseUrl}`, userData);
-        
         cy.wait(1000);
         cy.request({
             method: 'DELETE',

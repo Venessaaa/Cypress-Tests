@@ -1,3 +1,4 @@
+import 'cypress-plugin-api';
 describe('POST - simulate different status codes', () => {
   const baseUrl = 'https://petstore.swagger.io/v2/user';
   const testUser = {
@@ -12,7 +13,7 @@ describe('POST - simulate different status codes', () => {
   };
 
   it('returned status 200 on successful creation', () => {
-    cy.request({
+    cy.api({
       method: 'POST',
       url: `${baseUrl}`,
       body: testUser,
@@ -27,7 +28,7 @@ describe('POST - simulate different status codes', () => {
 
 
   it('returned status 400 for bad request (malformed JSON)', () => {
-    cy.request({
+    cy.api({
       method: 'POST',
       url: `${baseUrl}`,
       body: 'not a json', // Malformed body
@@ -49,7 +50,7 @@ describe('POST - simulate different status codes', () => {
       }
     }).as('unauthorizedPost');
 
-    cy.request({
+    cy.api({
       method: 'POST',
       url: `${baseUrl}`,
       body: testUser,
@@ -67,7 +68,7 @@ describe('POST - simulate different status codes', () => {
 
   it('returned status 409 Conflict on duplicate user creation', () => {
     // create user
-    cy.request({
+    cy.api({
       method: 'POST',
       url: `${baseUrl}`,
       body: testUser,
@@ -76,7 +77,7 @@ describe('POST - simulate different status codes', () => {
       }
     }).then(() => {
       // Second POST - same user again
-      cy.request({
+      cy.api({
         method: 'POST',
         url: `${baseUrl}`,
         body: testUser,

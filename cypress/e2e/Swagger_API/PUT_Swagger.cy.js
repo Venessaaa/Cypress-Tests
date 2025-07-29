@@ -1,8 +1,9 @@
+import 'cypress-plugin-api';
 describe('PUT - simulate different status code', () => {
   const baseUrl = 'https://petstore.swagger.io/v2/user';
 
   it('returned status 200 successfully update an existing user', () => {
-    cy.request({
+    cy.api({
       method: 'PUT',
       url: `${baseUrl}/4`, // existing username
       body: {
@@ -26,7 +27,7 @@ describe('PUT - simulate different status code', () => {
   });
 
   it('returned status 404 for a non-existing user', () => {
-    cy.request({
+    cy.api({
       method: 'PUT',
       url: `${baseUrl}/nonexistent_user_abc123`, // random non-existing user
       body: {
@@ -50,7 +51,7 @@ describe('PUT - simulate different status code', () => {
   });
 
   it('returned status 400 for invalid request body (malformed)', () => {
-    cy.request({
+    cy.api({
       method: 'PUT',
       url: `${baseUrl}/user!4`,
       body: "This is not a valid JSON body", // invalid format
