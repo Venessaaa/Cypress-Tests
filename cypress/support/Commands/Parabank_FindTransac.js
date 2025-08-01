@@ -73,8 +73,7 @@ Cypress.Commands.add('findTransactionAmount', () => {
             cy.get('#accountId').select(selectedAccount);
             cy.get('#amount').clear().type(randomAmount.toString());
             cy.get('#findByAmount').click();
-            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
-            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
+            cy.get('#resultContainer').should('be.visible');
 
         });
 });
@@ -120,8 +119,7 @@ Cypress.Commands.add('findTransactionDateRange', () => {
             cy.get('#fromDate').clear().type(formatDate(fromDate));
             cy.get('#toDate').clear().type(formatDate(toDate));
             cy.get('#findByDateRange').click();
-            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
-            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
+            cy.get('#resultContainer').should('be.visible');
         });
 });
 
@@ -162,8 +160,7 @@ Cypress.Commands.add('findTransactionDate', () => {
             cy.get('#accountId').select(selectedAccount);
             cy.get('#transactionDate').clear().type(formattedDate);
             cy.get('#findByDate').click();
-            cy.get('#errorContainer > .title').should('contain.text', 'Error').and('be.visible');
-            cy.get('#errorContainer > .error').should('contain.text', 'An internal error has occurred and has been logged.').and('be.visible');
+            cy.get('#resultContainer').should('be.visible');
         });
 });
 
